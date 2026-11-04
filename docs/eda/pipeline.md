@@ -10,6 +10,9 @@ Com base nos achados da EDA (análises univariada, bivariada, multivariada e PCA
 - **Estratégia escolhida:** `SimpleImputer(strategy="median")`.
 - **Justificativa:** a distribuição de `bmi` é assimétrica à direita e possui outliers (ver [Multivariada e Outliers](multivariada.md)); a **mediana** é menos sensível a valores extremos do que a média, evitando distorcer a imputação. Como a proporção de ausentes é pequena (~3,9%) e não há evidência de que a ausência esteja associada ao *target*, a imputação é preferível à remoção das linhas, que descartaria parte da já escassa classe minoritária de `stroke = 1`.
 
+!!! warning "Correção feita na APS2"
+    A afirmação de que a ausência de `bmi` não está associada ao *target* não se sustenta. No treino, AVC ocorre em 21,8% dos pacientes sem `bmi` registrado e em 4,1% dos demais. A imputação por mediana continua válida, mas apaga essa informação. Veja a [Mudança no Pipeline](../aps2/mudanca.md).
+
 ### Encoding de variáveis categóricas
 
 - **Variáveis afetadas:** `gender`, `ever_married`, `work_type`, `Residence_type`, `smoking_status`.

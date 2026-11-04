@@ -1,0 +1,20 @@
+# Referências
+
+1. BERGSTRA, J.; BENGIO, Y. Random search for hyper-parameter optimization. *Journal of Machine Learning Research*, v. 13, p. 281-305, 2012. Disponível em: <https://jmlr.org/papers/v13/bergstra12a.html>.
+2. COLLINS, G. S. et al. TRIPOD+AI statement: updated guidance for reporting clinical prediction models that use regression or machine learning methods. *BMJ*, v. 385, e078378, 2024. DOI: [10.1136/bmj-2023-078378](https://doi.org/10.1136/bmj-2023-078378).
+3. DAVIS, S. E. et al. Calibration drift in regression and machine learning models for acute kidney injury. *Journal of the American Medical Informatics Association*, v. 24, n. 6, p. 1052-1061, 2017. DOI: [10.1093/jamia/ocx030](https://doi.org/10.1093/jamia/ocx030).
+4. FEDESORIANO. *Stroke Prediction Dataset*. Kaggle, 2021. Disponível em: <https://www.kaggle.com/datasets/fedesoriano/stroke-prediction-dataset>.
+5. FINLAYSON, S. G. et al. The clinician and dataset shift in artificial intelligence. *New England Journal of Medicine*, v. 385, n. 3, p. 283-286, 2021. DOI: [10.1056/NEJMc2104626](https://doi.org/10.1056/NEJMc2104626).
+6. FRIEDMAN, J. H. Greedy function approximation: a gradient boosting machine. *The Annals of Statistics*, v. 29, n. 5, p. 1189-1232, 2001. DOI: [10.1214/aos/1013203451](https://doi.org/10.1214/aos/1013203451).
+7. KAPOOR, S.; NARAYANAN, A. Leakage and the reproducibility crisis in machine-learning-based science. *Patterns*, v. 4, n. 9, 100804, 2023. DOI: [10.1016/j.patter.2023.100804](https://doi.org/10.1016/j.patter.2023.100804).
+8. LUNDBERG, S. M.; LEE, S.-I. A unified approach to interpreting model predictions. In: *Advances in Neural Information Processing Systems 30*, 2017. Disponível em: <https://papers.nips.cc/paper_files/paper/2017/hash/8a20a8621978632d76c43dfd28b67767-Abstract.html>.
+9. NADEAU, C.; BENGIO, Y. Inference for the generalization error. *Machine Learning*, v. 52, p. 239-281, 2003. DOI: [10.1023/A:1024068626366](https://doi.org/10.1023/A:1024068626366).
+10. O'DONNELL, M. J. et al. Global and regional effects of potentially modifiable risk factors associated with acute stroke in 32 countries (INTERSTROKE): a case-control study. *The Lancet*, v. 388, n. 10046, p. 761-775, 2016. DOI: [10.1016/S0140-6736(16)30506-2](https://doi.org/10.1016/S0140-6736(16)30506-2).
+11. PEDREGOSA, F. et al. Scikit-learn: machine learning in Python. *Journal of Machine Learning Research*, v. 12, p. 2825-2830, 2011. Disponível em: <https://jmlr.org/papers/v12/pedregosa11a.html>.
+12. SAITO, T.; REHMSMEIER, M. The precision-recall plot is more informative than the ROC plot when evaluating binary classifiers on imbalanced datasets. *PLOS ONE*, v. 10, n. 3, e0118432, 2015. DOI: [10.1371/journal.pone.0118432](https://doi.org/10.1371/journal.pone.0118432).
+13. SCULLEY, D. et al. Hidden technical debt in machine learning systems. In: *Advances in Neural Information Processing Systems 28*, p. 2503-2511, 2015. Disponível em: <https://proceedings.neurips.cc/paper/2015/file/86df7dcfd896fcaf2674f757a2463eba-Paper.pdf>.
+14. STROBL, C. et al. Bias in random forest variable importance measures: illustrations, sources and a solution. *BMC Bioinformatics*, v. 8, 25, 2007. DOI: [10.1186/1471-2105-8-25](https://doi.org/10.1186/1471-2105-8-25).
+15. VAN CALSTER, B. et al. Calibration: the Achilles heel of predictive analytics. *BMC Medicine*, v. 17, 230, 2019. DOI: [10.1186/s12916-019-1466-7](https://doi.org/10.1186/s12916-019-1466-7).
+16. WESTREICH, D.; GREENLAND, S. The table 2 fallacy: presenting and interpreting confounder and modifier coefficients. *American Journal of Epidemiology*, v. 177, n. 4, p. 292-298, 2013. DOI: [10.1093/aje/kws412](https://doi.org/10.1093/aje/kws412).
+17. WOLF, P. A.; ABBOTT, R. D.; KANNEL, W. B. Atrial fibrillation as an independent risk factor for stroke: the Framingham Study. *Stroke*, v. 22, n. 8, p. 983-988, 1991. DOI: [10.1161/01.STR.22.8.983](https://doi.org/10.1161/01.STR.22.8.983).
+18. WOLF, P. A. et al. Probability of stroke: a risk profile from the Framingham Study. *Stroke*, v. 22, n. 3, p. 312-318, 1991.

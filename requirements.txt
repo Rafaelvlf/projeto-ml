@@ -1,9 +1,12 @@
-pandas
-numpy
-matplotlib
-seaborn
-scikit-learn
-scipy
-joblib
-mkdocs
-mkdocs-material
+# Versões usadas na execução do notebook da APS2 (Python 3.12 ou superior)
+pandas==3.1.1
+numpy==2.5.4
+matplotlib==3.11.2
+seaborn==0.13.2
+scikit-learn==1.9.1
+scipy==1.18.1
+joblib==1.6.0
+shap==0.54.1
+ipykernel==7.4.0
+mkdocs==1.6.1
+mkdocs-material==9.8.0
