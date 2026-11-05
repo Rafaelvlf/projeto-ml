@@ -18,7 +18,7 @@ Analisamos a regressão logística ajustada com o pipeline final (`C = 100`, Ela
 **As 3 maiores magnitudes:**
 
 1. **`age` (+1,675; razão de chances de 5,34 por desvio-padrão de 22,6 anos, ou 2,10 por década):** o maior efeito do modelo, coerente com a EDA.
-2. **`bmi_ausente` (+1,432; razão de chances de 4,19):** mantidas as demais variáveis, a ausência de `bmi` multiplica por cerca de 4 a chance prevista, valor próximo ao estimado na Seção 1.3. Carrega o risco de vazamento discutido naquela seção.
+2. **`bmi_ausente` (+1,432; razão de chances de 4,19):** mantidas as demais variáveis, a ausência de `bmi` está associada a chances (odds) estimadas de AVC aproximadamente 4,19 vezes maiores, valor próximo ao estimado na Seção 1.3. Carrega o risco de vazamento discutido naquela seção.
 3. **`work_type_Never_worked` (-0,673; razão de chances de 0,51):** não deve ser lido como proteção. A categoria tem 13 pacientes no treino, nenhum com AVC, e idade mediana de 17 anos.
 
 **Cuidado com colunas one-hot.** Como o pipeline mantém todas as categorias, uma coluna de cada variável é redundante, e só a **diferença** entre categorias é identificável. `Residence_type_Rural` (-0,484) e `Residence_type_Urban` (-0,425) parecem importantes, mas a diferença entre elas é de apenas 0,059. A tabela de contrastes traz a leitura correta: hipertensão tem razão de chances de 1,48; doença cardíaca, de 1,15; e fumar em comparação a nunca ter fumado, de 1,26.
@@ -95,11 +95,11 @@ Escolhemos três casos do teste: o verdadeiro positivo mais confiante, o falso p
 
 ![Explicação SHAP do verdadeiro positivo: paciente de 78 anos](../assets/images/aps2/13_shap_verdadeiro_positivo.png)
 
-**Verdadeiro positivo (paciente 13, com AVC, probabilidade de 55,2%).** Homem de 78 anos com doença cardíaca, glicose de 219,8 e sem `bmi` registrado. As maiores contribuições são idade (+1,82), `bmi` ausente (+1,11), doença cardíaca (+0,30) e glicose (+0,30). Este acerto depende em parte do indicador questionado: sem essa contribuição, a decomposição aditiva daria cerca de 29%, ainda acima do limiar.
+**Verdadeiro positivo (paciente 13, com AVC, probabilidade de 55,2%).** Homem de 78 anos com doença cardíaca, glicose de 219,8 e sem `bmi` registrado. As maiores contribuições são idade (+1,82), `bmi` ausente (+1,11), doença cardíaca (+0,30) e glicose (+0,30). Este acerto depende parcialmente do indicador de `bmi` ausente. Sem sua contribuição na decomposição SHAP, a probabilidade calculada seria de aproximadamente 29%, ainda acima do limiar. Essa estimativa é apenas uma decomposição matemática, não uma nova previsão do modelo.
 
 ![Explicação SHAP do falso positivo: paciente de 81 anos](../assets/images/aps2/14_shap_falso_positivo.png)
 
-**Falso positivo (paciente 3318, sem AVC registrado, probabilidade de 56,1%).** Homem de 81 anos com hipertensão, doença cardíaca e glicose de 220,6. Idade (+1,92), hipertensão (+0,92), doença cardíaca (+0,59) e glicose (+0,33) explicam a previsão. O perfil é de alto risco, e um alerta aqui seria razoável: o rótulo indica apenas que não há AVC registrado.
+**Falso positivo (paciente 3318, sem AVC registrado, probabilidade de 56,1%).** Homem de 81 anos com hipertensão, doença cardíaca e glicose de 220,6. Idade (+1,92), hipertensão (+0,92), doença cardíaca (+0,59) e glicose (+0,33) explicam a previsão. O modelo atribuiu alta probabilidade de AVC devido à combinação de idade elevada, hipertensão, doença cardíaca e glicose elevada. Embora o registro indique ausência de AVC, esse caso ilustra como o classificador pode produzir falsos positivos em indivíduos com características associadas ao desfecho.
 
 ![Explicação SHAP do falso negativo: paciente de 14 anos](../assets/images/aps2/15_shap_falso_negativo.png)
 

@@ -4,7 +4,7 @@ As limitações abaixo não foram tratadas nas seções anteriores. Os cálculos
 
 ## 4.1 Limitações do melhor modelo
 
-**Limitação 1: o modelo não detecta AVC em pacientes mais jovens.** Abaixo de 60 anos, detectou 0 de 12 AVCs (IC 95% exato de 0% a 26,5%) e sinalizou 1,5% dos pacientes; a partir dos 60, detectou 86,8% e sinalizou 51,1%. Esses 12 casos são a maioria dos 17 falsos negativos. Também há diferença por sexo: recall de 75,9% no feminino e 52,4% no masculino, com precisão de 27,5% e 15,7%, embora com poucos eventos (29 e 21). Um modelo só com idade já alcança AP de 0,169 na validação cruzada, contra 0,252 do modelo completo, o que mostra quanto do desempenho vem dessa variável.
+**Limitação 1: baixa sensibilidade para AVC em pacientes abaixo de 60 anos no conjunto de teste.** Abaixo de 60 anos, detectou 0 de 12 AVCs (IC 95% exato de 0% a 26,5%) e sinalizou 1,5% dos pacientes; a partir dos 60, detectou 86,8% e sinalizou 51,1%. Esses 12 casos são a maioria dos 17 falsos negativos. Também há diferença por sexo: recall de 75,9% no feminino e 52,4% no masculino, com precisão de 27,5% e 15,7%, embora com poucos eventos (29 e 21). Um modelo só com idade já alcança AP de 0,169 na validação cruzada, contra 0,252 do modelo completo, o que mostra quanto do desempenho vem dessa variável.
 
 O desempenho agregado esconde esse padrão. O TRIPOD+AI recomenda reportar o desempenho em subgrupos relevantes (Collins et al., 2024). Um uso real exigiria avaliar o modelo por faixa etária e coletar mais casos em pacientes jovens.
 
@@ -15,7 +15,7 @@ O desempenho agregado esconde esse padrão. O TRIPOD+AI recomenda reportar o des
 | Feminino | 599 | 29 | 13,4% | 75,9% | 27,5% |
 | Masculino | 423 | 21 | 16,5% | 52,4% | 15,7% |
 
-**Limitação 2: as probabilidades e a precisão só valem para populações parecidas com esta amostra.** No teste, a calibração parece razoável: risco médio previsto de 4,45% contra 4,89% observado, e Brier de 0,0415 contra 0,0465 do Dummy. A evidência, porém, é fraca, pois 35 dos 50 AVCs estão no sexto de maior risco, em que o modelo prevê 16,2% e a taxa observada é de 20,5%.
+**Limitação 2: as probabilidades e a precisão só valem para populações parecidas com esta amostra.** No teste, o risco médio previsto (4,45%) ficou próximo da prevalência observada (4,89%), e o Brier score foi inferior ao do Dummy (0,0415 contra 0,0465). Entretanto, esses resultados não garantem boa calibração em todas as faixas de risco. No sexto de maior risco, por exemplo, a probabilidade média prevista foi de 16,2%, enquanto a taxa observada de AVC foi de 20,5%.
 
 Além disso, com o mesmo recall e a mesma especificidade, a precisão cairia de 22,4% em uma prevalência de 5% para 10,1% em uma de 2% e 5,2% em uma de 1%. Como não sabemos como a amostra foi formada, os 4,9% podem não representar a população de uso. Probabilidades mal calibradas podem prejudicar decisões clínicas (Van Calster et al., 2019), então a calibração precisaria ser verificada em dados externos antes de qualquer uso.
 
@@ -43,7 +43,7 @@ Além disso, com o mesmo recall e a mesma especificidade, a precisão cairia de 
 
 **Limitação 2: faltam preditores clínicos importantes, e os disponíveis são grosseiros.** A base não traz fibrilação atrial, fator de risco independente para AVC (Wolf; Abbott; Kannel, 1991), nem valores de pressão arterial ou uso de anti-hipertensivos, presentes no perfil de risco de Framingham (Wolf et al., 1991). Também faltam fatores avaliados no INTERSTROKE, como atividade física, dieta, lipídios, álcool e fatores psicossociais; em conjunto, os fatores desse estudo responderam por cerca de 90% do risco atribuível populacional (O'Donnell et al., 2016).
 
-Os dados disponíveis também são limitados: `hypertension` e `heart_disease` são binárias, `smoking_status` é `Unknown` em 30% dos registros, e `stroke` não separa AVC isquêmico de hemorrágico, que têm perfis de risco diferentes (O'Donnell et al., 2016). Essas lacunas ajudam a explicar a precisão baixa, que ajuste de hiperparâmetros não resolve.
+Os dados disponíveis também são limitados: `hypertension` e `heart_disease` são binárias, `smoking_status` é `Unknown` em 30% dos registros, e `stroke` não separa AVC isquêmico de hemorrágico, que têm perfis de risco diferentes (O'Donnell et al., 2016). Essas lacunas podem limitar a capacidade preditiva do modelo e contribuir para sua baixa precisão, embora não seja possível quantificar seu impacto sem dados adicionais.
 
 ## 4.3 Operacionalização e manutenção
 
@@ -53,7 +53,7 @@ Em seguida, o monitoramento acompanharia a distribuição das entradas, a taxa d
 
 **Ação 2: versionamento conjunto e atualização por gatilho.** Pré-processamento, modelo e limiar seriam distribuídos como um único artefato versionado, com versões fixas das bibliotecas e validação do esquema de entrada (tipos, faixas e categorias novas). Mudar uma parte afeta as demais, e essas dependências são fonte conhecida de dívida técnica em sistemas de ML (Sculley et al., 2015).
 
-A atualização seria acionada pelo monitoramento, e não por calendário fixo, como recomendam Davis et al. (2017), que observaram a calibração piorar mesmo com a discriminação estável. Primeiro se recalibra o modelo. Só uma queda de discriminação justifica um novo ajuste, e cada nova versão precisa ser avaliada em dados recentes e por subgrupo antes de substituir a anterior.
+A atualização seria acionada pelo monitoramento, e não por calendário fixo, como recomendam Davis et al. (2017), que observaram a calibração piorar mesmo com a discriminação estável. Antes de qualquer atualização, deve-se investigar a causa da degradação do desempenho. Dependendo do problema identificado, podem ser necessárias recalibração, revisão do pré-processamento ou novo treinamento. Cada nova versão deve ser avaliada em dados recentes e por subgrupo antes de substituir a anterior.
 
 ## Conclusão
 

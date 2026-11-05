@@ -68,6 +68,6 @@ A regressão logística escolheu `C = 100`, no limite da grade, mas estender a g
 | 2872 | 0,460 | 0,228 | 0,038 |
 | 3270 | 0,440 | 0,246 | 0,041 |
 
-A AP de treino cai de 0,797 para 0,440 conforme a amostra cresce, enquanto a de validação sobe de 0,156 para 0,246. A distância de cerca de 0,19 entre as curvas ao final indica **alta variância**: o modelo ainda se ajusta a particularidades do treino. A curva de validação continua subindo, então mais dados, em especial mais casos de AVC, tendem a ajudar. O ganho dos últimos passos deve ser lido com cautela, pois o desvio-padrão entre folds é de cerca de 0,04.
+A AP de treino cai de 0,797 para 0,440 conforme a amostra cresce, enquanto a de validação sobe de 0,156 para 0,246. A diferença de aproximadamente 0,19 entre as curvas de treino e validação sugere **sobreajuste**, indicando que o modelo ainda pode estar aprendendo particularidades dos dados de treinamento. A curva de validação continua subindo, sugerindo que mais dados, especialmente mais casos de AVC, podem melhorar a capacidade de generalização do modelo. O ganho dos últimos passos deve ser lido com cautela, pois o desvio-padrão entre folds é de cerca de 0,04.
 
 O último ponto (0,246) difere da AP da busca (0,252) porque a curva embaralha as linhas e altera os sorteios internos do modelo. Essa diferença dá uma ideia do ruído de uma execução.

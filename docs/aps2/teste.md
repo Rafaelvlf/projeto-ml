@@ -32,7 +32,7 @@ Avaliação única do modelo, do pipeline e do limiar já fixados. Os intervalos
 
 - **Accuracy (0,869):** é menor que a do Dummy (0,951), que nunca prevê AVC e por isso não detecta nenhum caso. Com esta prevalência, a métrica não ajuda a comparar os modelos.
 - **Recall (0,660) e Precision (0,220):** o modelo detecta cerca de 2 em cada 3 AVCs, e 22% dos pacientes sinalizados tiveram AVC, 4,5 vezes a prevalência.
-- **AP (0,240):** é próxima da estimativa da validação cruzada (0,252), o que indica que a seleção não superestimou muito o desempenho.
+- **AP (0,240):** ficou próxima da média obtida na validação cruzada (0,252), sugerindo consistência entre os resultados. Entretanto, o número reduzido de casos positivos no teste limita a precisão dessa avaliação.
 - **Incerteza:** os intervalos são largos. O recall, por exemplo, vai de 0,528 a 0,791.
 
 ## 2.3 Matriz de confusão

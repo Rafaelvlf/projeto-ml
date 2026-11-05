@@ -27,7 +27,7 @@ Comparamos um Dummy, uma regressão logística regularizada e um Gradient Boosti
 
 - **O modelo ordena bem os pacientes por risco, mas a precisão é baixa.** Detectou 33 dos 50 AVCs do teste, com 117 falsos positivos, ou 4,5 alertas por AVC detectado.
 - **A idade concentra o sinal.** O modelo não detectou nenhum dos 12 AVCs abaixo de 60 anos no teste.
-- **O ganho do indicador não se confirmou no teste.** A validação cruzada sugeriu ganho, mas no teste a AP foi de 0,240 com o indicador e 0,251 sem ele, com intervalo de confiança que inclui ganho e perda. Para uso real, a versão sem indicador é a alternativa mais segura.
+- **O ganho do indicador não se confirmou no teste.** **O ganho do indicador não se confirmou no teste.** Embora o Gradient Boosting com indicador tenha sido selecionado como melhor modelo pela validação cruzada, sua AP no teste foi de 0,240, contra 0,251 da versão sem indicador. Essa diferença é inconclusiva, pois o intervalo de confiança inclui ganho e perda. Para uma eventual implantação, a versão sem indicador seria uma alternativa mais prudente, devido ao possível vazamento temporal associado à ausência de `bmi`.
 - **O recall depende bastante do limiar escolhido.** Repetir a escolha em outras divisões do treino levaria o recall no teste a valores entre 0,68 e 0,82.
 - **As diferenças entre os modelos são pequenas diante do ruído** de uma base com poucos eventos. O próximo ganho tende a vir de mais casos e de variáveis clínicas melhores, e não de modelos mais complexos.
 

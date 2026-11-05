@@ -68,7 +68,7 @@ cv = RepeatedStratifiedKFold(n_splits=5, n_repeats=3, random_state=42)
 
 ![Comparação da Average Precision dos cinco modelos na validação cruzada](../assets/images/aps2/01_comparacao_modelos.png)
 
-A busca trouxe ganho pequeno: a regressão logística passou de 0,187 para 0,190, e o Gradient Boosting, de 0,183 para 0,202. O Gradient Boosting ajustado é o melhor modelo até aqui, mas sua vantagem sobre a regressão logística (+0,012; IC 95% de -0,027 a +0,052; p = 0,51) não é estatisticamente significativa. Esses valores são levemente otimistas, pois cada um é o máximo entre muitas configurações; a estimativa sem esse viés virá do teste.
+A busca trouxe ganho pequeno: a regressão logística passou de 0,187 para 0,190, e o Gradient Boosting, de 0,183 para 0,202. O Gradient Boosting ajustado é o melhor modelo até aqui, mas sua vantagem sobre a regressão logística (+0,012; IC 95% de -0,027 a +0,052; p = 0,51) não é estatisticamente significativa. Esses resultados podem ser otimistas, pois os hiperparâmetros foram selecionados utilizando os mesmos folds empregados na comparação. Por isso, os intervalos de confiança e valores de p devem ser interpretados com cautela, já que não incorporam completamente a incerteza da seleção. O conjunto de teste fornece uma avaliação independente do desempenho do modelo escolhido.
 
 ![Resposta da Average Precision aos hiperparâmetros da regressão logística e do Gradient Boosting](../assets/images/aps2/02_sensibilidade_hiperparametros.png)
 
